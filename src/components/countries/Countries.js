@@ -1,29 +1,25 @@
-import React, { Fragment, useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Spinner from '../layout/Spinner';
-import { getCountries } from '../../actions/countries';
-import CountryCard from './CountryCard';
-import './Countries.css';
+import React, { Fragment, useEffect } from "react";
+import Spinner from "../layout/Spinner";
+import countries from "../../countries";
+import CountryCard from "./CountryCard";
+import "./Countries.css";
 
-const Countries = ({ getCountries, countries: { countries, loading } }) => {
-  useEffect(() => {
-    getCountries();
-  }, [getCountries]);
+const Countries = () => {
+  const loading = false;
 
   return (
     <Fragment>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="countries background">
-          <div className="banner"></div>
-          <div className="content">
-            <div className="overlay">
-              <div className="container">
-                <div className="container">
-                  <div className="card-container">
-                    {countries.map(country => (
+        <div className='countries background'>
+          <div className='banner'></div>
+          <div className='content'>
+            <div className='overlay'>
+              <div className='container'>
+                <div className='container'>
+                  <div className='card-container'>
+                    {countries.map((country) => (
                       <CountryCard
                         key={country._id}
                         country={country.name}
@@ -42,12 +38,4 @@ const Countries = ({ getCountries, countries: { countries, loading } }) => {
   );
 };
 
-Countries.propTypes = {
-  getCountries: PropTypes.func.isRequired,
-  countries: PropTypes.object.isRequired
-};
-const mapStateToProps = state => ({
-  countries: state.countries
-});
-
-export default connect(mapStateToProps, { getCountries })(Countries);
+export default Countries;

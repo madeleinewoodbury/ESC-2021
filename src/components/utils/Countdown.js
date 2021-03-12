@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Countdown.css';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./Countdown.css";
 
-const Countdown = ({ timeTillDate, isAuthenticated }) => {
+const Countdown = ({ timeTillDate }) => {
   const [timeLeft, setTimeLeft] = useState({});
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -31,33 +31,33 @@ const Countdown = ({ timeTillDate, isAuthenticated }) => {
   const { days, hours, minutes, seconds } = timeLeft;
 
   return (
-    <div className="countdown">
-      <div className="countdown-timers">
-        <div className="timer">
+    <div className='countdown'>
+      <div className='countdown-timers'>
+        <div className='timer'>
           <span>{days}</span> <span>days</span>
         </div>
-        <div className="timer">
+        <div className='timer'>
           <span>{hours}</span> <span>hours</span>
         </div>
-        <div className="timer">
+        <div className='timer'>
           <span>{minutes}</span> <span>minutes</span>
         </div>
-        <div className="timer">
+        <div className='timer'>
           <span>{seconds}</span> <span>seconds</span>
         </div>
       </div>
       <h2>Until the Grand Final</h2>
-      <Link to="/participants" className="btn btn-secondary">
+      <Link to='/participants' className='btn btn-secondary'>
         View All Participants
       </Link>
-      {!isAuthenticated && (
+      {/* {!isAuthenticated && (
         <p>
           <Link to="/login" className="text-primary sing-in">
             Sign in{' '}
           </Link>{' '}
           to give your votes
         </p>
-      )}
+      )} */}
     </div>
   );
 };

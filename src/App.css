@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 :root {
   --primary-color: #1ebff7;
@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   margin: 0;
 }
 
@@ -41,7 +41,7 @@ li {
 }
 
 .background .banner {
-  background: url('./img/esc-background-2.png') no-repeat center center/cover;
+  background: url("./img/esc-background-2.png") no-repeat center center/cover;
   width: 30%;
   position: fixed;
   top: 10vh;
@@ -51,7 +51,7 @@ li {
 }
 
 .background .content {
-  background: url('./esc-stage-background.jpg') center center/cover fixed;
+  background: url("./img/esc-stage-background.jpg") center center/cover fixed;
   top: 10vh;
   left: 0;
   width: 70%;
@@ -220,10 +220,10 @@ li {
   color: #888;
 }
 
-.form input[type='text'],
-.form input[type='email'],
-.form input[type='password'],
-.form input[type='number'],
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="number"],
 .form select,
 .form textarea {
   display: block;
@@ -234,7 +234,7 @@ li {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-.form input[type='submit'],
+.form input[type="submit"],
 button {
   font: inherit;
 }
