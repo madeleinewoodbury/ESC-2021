@@ -1,19 +1,18 @@
 import React, { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCountry } from "../../actions/countries";
 import Spinner from "../layout/Spinner";
 import "./Postcard.css";
 
-const CountryPostcard = () => {
-  const loading = false;
-  const country = {
-    name: "Albania",
-    code: "AL",
-    flag:
-      "https://static.eurovision.tv/hb-cgi/images/8d938a00-42af-4b60-835f-415a224a66cd.svg",
-    image:
-      "https://res.cloudinary.com/dsliohzpe/image/upload/v1592855644/countries/albania_pt8ebo.jpg",
-    firstParticipation: 2004,
-    video: "p-E-kIFPrsY",
-  };
+const CountryPostcard = ({ match, history }) => {
+  const dispatch = useDispatch();
+  const countryDetail = useSelector((state) => state.countries);
+  const { country, loading, error } = countryDetail;
+
+  useEffect(() => {
+    dispatch(getCountry(match.params.id, history));
+  }, [dispatch, match.params.id]);
+
   return (
     <Fragment>
       {country === null || loading ? (
@@ -58,26 +57,15 @@ const CountryPostcard = () => {
                   </div>
                   <div className='postcard-list'>
                     <h3>Hosts</h3>
-                    <span>0</span>
+                    <span>{country.events ? country.events.length : "0"}</span>
                   </div>
                 </div>
               </div>
 
               <div className='postcard-content'>
                 <div className='postcard-bio'>
-                  <p className='intro'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Adipisci alias temporibus nemo.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Natus facere autem quis nam dolore ipsum, saepe voluptatem
-                    tempora unde provident a possimus maiores incidunt dolor
-                    maxime nihil quidem dignissimos omnis? Vero temporibus
-                    similique rerum itaque ex cum? Illo, placeat nemo? Rerum
-                    tenetur necessitatibus alias inventore, officiis iusto
-                    maiores eveniet neque.
-                  </p>
+                  {country.bio &&
+                    country.bio.map((bio, idx) => <p key={idx}>{bio}</p>)}
                 </div>
 
                 <div className='postcard-video'>

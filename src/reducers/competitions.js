@@ -3,44 +3,42 @@ import {
   GET_COMPETITIONS,
   COMPETITION_ERROR,
   CLEAR_COMPETITION,
-  REMOVE_COMPETITION
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
   competitions: [],
   competition: null,
   loading: true,
-  error: {}
+  error: {},
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_COMPETITIONS:
       return {
         ...state,
         competitions: payload,
-        loading: false
+        loading: false,
       };
     case GET_COMPETITION:
       return {
         ...state,
         competition: payload,
-        loading: false
+        loading: false,
       };
     case CLEAR_COMPETITION:
-    case REMOVE_COMPETITION:
       return {
         ...state,
         competitions: [],
         competition: null,
-        loading: false
+        loading: false,
       };
     case COMPETITION_ERROR:
       return {
         ...state,
         error: payload,
-        loading: false
+        loading: false,
       };
     default:
       return state;

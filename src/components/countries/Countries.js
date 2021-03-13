@@ -1,11 +1,18 @@
 import React, { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCountries } from "../../actions/countries";
 import Spinner from "../layout/Spinner";
-import countries from "../../countries";
 import CountryCard from "./CountryCard";
 import "./Countries.css";
 
 const Countries = () => {
-  const loading = false;
+  const dispatch = useDispatch();
+  const countriesList = useSelector((state) => state.countries);
+  const { countries, loading, error } = countriesList;
+
+  useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
 
   return (
     <Fragment>
