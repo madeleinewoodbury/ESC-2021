@@ -1,16 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 const DashboardItem = ({
   vote,
-  participant: { flag, country, artist, song },
+  participant: { id, flag, country, artist, song },
 }) => {
   return (
     <div className='list-item'>
       <div className='item-info'>
-        <img src={country.flag} alt={country.name} />
-        <Link to={`/participants/123`}>
+        <img src={flag} alt={country} />
+        <Link to={`/participants/${id}`}>
           <h2>
-            {artist}{" "}
+            {artist}{' '}
             <span className='hide-sm'>
               <em>"{song}"</em>
             </span>
@@ -23,7 +24,7 @@ const DashboardItem = ({
         </h4>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DashboardItem;
+export default DashboardItem

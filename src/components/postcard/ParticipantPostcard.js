@@ -1,24 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getParticipant } from "../../actions/participants";
-import { Link } from "react-router-dom";
-import Spinner from "../layout/Spinner";
-import "./Postcard.css";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getParticipant, voteOnParticipant } from '../../actions/participants'
+import { Link } from 'react-router-dom'
+import Spinner from '../layout/Spinner'
+import './Postcard.css'
 
 const ParticipantPostcard = ({ match, history }) => {
-  const dispatch = useDispatch();
-  const participantDetail = useSelector((state) => state.participants);
-  const { participant, loading, error } = participantDetail;
+  const dispatch = useDispatch()
+  const participantDetail = useSelector((state) => state.participants)
+  const auth = useSelector((state) => state.auth)
+  const { participant, loading } = participantDetail
+  const { user, isAuthenticated } = auth
 
-  const [formData, setFormData] = useState("");
+  const [formData, setFormData] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+    dispatch(voteOnParticipant(match.params.id, formData))
+  }
 
   useEffect(() => {
-    dispatch(getParticipant(match.params.id, history));
-  }, [dispatch, match.params.id]);
+    dispatch(getParticipant(match.params.id, history))
+    if (user) {
+      let vote = user.votes.filter(
+        (vote) => vote.participant.id === match.params.id
+      )
+      if (vote.length > 0) {
+        setFormData(vote[0].vote)
+      }
+    }
+  }, [dispatch, match.params.id, history, user])
 
   return loading || participant === null ? (
     <Spinner />
@@ -59,32 +70,38 @@ const ParticipantPostcard = ({ match, history }) => {
               <h3>Song</h3>
               <span>{participant.song}</span>
             </div>
-            <div className='user-votes'>
-              <h3>Your Votes</h3>
+            {isAuthenticated && user !== null ? (
+              <div className='user-votes'>
+                <h3>Your Votes</h3>
 
-              <form className='form' onSubmit={(e) => handleSubmit(e)}>
-                <div className='form-group'>
-                  <select
-                    name='vote'
-                    value={formData}
-                    onChange={(e) => setFormData(e.target.value)}
-                  >
-                    <option value='0'>Give your vote</option>
-                    <option value='1'>1 points</option>
-                    <option value='2'>2 points</option>
-                    <option value='3'>3 points</option>
-                    <option value='4'>4 points</option>
-                    <option value='5'>5 points</option>
-                    <option value='6'>6 points</option>
-                    <option value='7'>7 points</option>
-                    <option value='8'>8 points</option>
-                    <option value='10'>10 points</option>
-                    <option value='12'>12 points</option>
-                  </select>
-                </div>
-                <input type='submit' value='Vote' />
-              </form>
-            </div>
+                <form className='form' onSubmit={(e) => handleSubmit(e)}>
+                  <div className='form-group'>
+                    <select
+                      name='vote'
+                      value={formData}
+                      onChange={(e) => setFormData(e.target.value)}
+                    >
+                      <option value='0'>Give your vote</option>
+                      <option value='1'>1 points</option>
+                      <option value='2'>2 points</option>
+                      <option value='3'>3 points</option>
+                      <option value='4'>4 points</option>
+                      <option value='5'>5 points</option>
+                      <option value='6'>6 points</option>
+                      <option value='7'>7 points</option>
+                      <option value='8'>8 points</option>
+                      <option value='10'>10 points</option>
+                      <option value='12'>12 points</option>
+                    </select>
+                  </div>
+                  <input
+                    type='submit'
+                    value='Vote'
+                    disabled={formData === ''}
+                  />
+                </form>
+              </div>
+            ) : null}
           </div>
         </div>
 
@@ -116,7 +133,7 @@ const ParticipantPostcard = ({ match, history }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ParticipantPostcard;
+export default ParticipantPostcard

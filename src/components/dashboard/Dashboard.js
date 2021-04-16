@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import Spinner from '../layout/Spinner'
@@ -7,54 +7,7 @@ import './Dashboard.css'
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.auth)
-  const { isAuthenticated, loading } = auth
-  const user = {
-    name: 'John Doe',
-    votes: [
-      {
-        _id: 1,
-        participant: {
-          country: {
-            name: 'Albania',
-            code: 'AL',
-            flag:
-              'https://eurovision.tv/image/8d938a00-42af-4b60-835f-415a224a66cd.svg',
-          },
-          artist: 'Arilena Ara',
-          song: 'Fall From The Sky',
-        },
-        vote: 5,
-      },
-      {
-        _id: 2,
-        participant: {
-          country: {
-            name: 'Ireland',
-            code: 'IE',
-            flag:
-              'https://static.eurovision.tv/hb-cgi/images/8d93887b-7df6-40dc-bfa5-aa99d70ac957.svg',
-          },
-          artist: 'Lesley Roy',
-          song: 'Story Of My Life',
-        },
-        vote: 8,
-      },
-      {
-        _id: 3,
-        participant: {
-          country: {
-            name: 'Iceland',
-            code: 'IS',
-            flag:
-              'https://static.eurovision.tv/hb-cgi/images/8d9a46c4-def5-4b18-b4af-375320fbac0e.svg',
-          },
-          artist: 'Daði & Gagnamagnið',
-          song: 'Gagnamagnið (Think About Things)',
-        },
-        vote: 12,
-      },
-    ],
-  }
+  const { isAuthenticated, loading, user } = auth
   const [sortDown, toggleSortDown] = useState(true)
 
   if (!isAuthenticated) {
