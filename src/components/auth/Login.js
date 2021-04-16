@@ -1,24 +1,30 @@
-import React, { Fragment, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React, { Fragment, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../../actions/auth'
+import { Link, Redirect } from 'react-router-dom'
 
 const Login = () => {
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
+  const { isAuthenticated } = auth
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+    email: '',
+    password: '',
+  })
 
   const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value })
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+    dispatch(login(formData))
+  }
 
-  const { email, password } = formData;
+  const { email, password } = formData
 
-  // if (isAuthenticated) {
-  //   return <Redirect to="/dashboard" />;
-  // }
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />
+  }
 
   return (
     <Fragment>
@@ -58,7 +64,7 @@ const Login = () => {
                 />
               </form>
               <p className='my-1'>
-                Don't have an account?{" "}
+                Don't have an account?{' '}
                 <Link className='text-primary' to='/register'>
                   Sign Up
                 </Link>
@@ -68,7 +74,7 @@ const Login = () => {
         </div>
       </div>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

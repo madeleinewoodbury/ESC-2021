@@ -1,32 +1,37 @@
-import React, { Fragment, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React, { Fragment, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { register } from '../../actions/auth'
+import { Link, Redirect } from 'react-router-dom'
 
 const Register = () => {
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
+  const { isAuthenticated } = auth
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    password2: "",
-  });
+    name: '',
+    email: '',
+    password: '',
+    password2: '',
+  })
 
   const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value })
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (password !== password2) {
       // setAlert('Passwords do not match', 'danger', 3000);
-      alert("Passwords must match");
+      alert('Passwords must match')
     } else {
-      console.log("register");
+      dispatch(register(formData))
     }
-  };
+  }
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, password, password2 } = formData
 
-  // if (isAuthenticated) {
-  //   return <Redirect to="/dashboard" />;
-  // }
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />
+  }
 
   return (
     <Fragment>
@@ -87,7 +92,7 @@ const Register = () => {
                 />
               </form>
               <p className='my-1'>
-                Already have an account?{" "}
+                Already have an account?{' '}
                 <Link className='text-primary' to='/login'>
                   Sign In
                 </Link>
@@ -97,7 +102,7 @@ const Register = () => {
         </div>
       </div>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

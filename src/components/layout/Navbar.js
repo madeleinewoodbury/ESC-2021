@@ -1,20 +1,25 @@
-import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../../img/logo-white.png";
-import "./Navbar.css";
+import React, { Fragment, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../actions/auth'
+import { Link } from 'react-router-dom'
+import logo from '../../img/logo-white.png'
+import './Navbar.css'
 
 const Navbar = () => {
-  const [viewMenu, toggleViewMenu] = useState(false);
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
+  const { isAuthenticated, loading } = auth
+  const [viewMenu, toggleViewMenu] = useState(false)
 
   const handleLogout = (e) => {
     // window.innerWidth < 1024 && toggleViewMenu(!viewMenu);
     // logout();
-    console.log("Log out");
-  };
+    dispatch(logout())
+  }
 
   const handleClick = (e) => {
-    window.innerWidth < 1024 && toggleViewMenu(!viewMenu);
-  };
+    window.innerWidth < 1024 && toggleViewMenu(!viewMenu)
+  }
 
   const authLinks = (
     <ul className='nav-links'>
@@ -35,7 +40,7 @@ const Navbar = () => {
         </Link>
       </li>
     </ul>
-  );
+  )
 
   const guestLinks = (
     <ul className='nav-links'>
@@ -50,7 +55,7 @@ const Navbar = () => {
         </Link>
       </li>
     </ul>
-  );
+  )
 
   return (
     <Fragment>
@@ -102,14 +107,13 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          {/* {!loading && (
+          {!loading && (
             <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-          )} */}
-          {guestLinks}
+          )}
         </div>
       </nav>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
