@@ -1,11 +1,18 @@
-import React, { Fragment, useEffect } from "react";
-import Spinner from "../layout/Spinner";
-import events from "../../events";
-import CompetitionCard from "./CompetitionCard";
-import "./Competitions.css";
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCompetitions } from '../../actions/competitions'
+import Spinner from '../layout/Spinner'
+import CompetitionCard from './CompetitionCard'
+import './Competitions.css'
 
 const Competitions = () => {
-  const loading = false;
+  const dispatch = useDispatch()
+  const competitionsList = useSelector((state) => state.competitions)
+  const { competitions, loading } = competitionsList
+
+  useEffect(() => {
+    dispatch(getCompetitions())
+  }, [dispatch])
 
   return (
     <Fragment>
@@ -19,12 +26,13 @@ const Competitions = () => {
               <div className='container'>
                 <div className='container'>
                   <div className='card-container'>
-                    {events.map((competition) => (
-                      <CompetitionCard
-                        key={competition._id}
-                        competition={competition}
-                      />
-                    ))}
+                    {competitions.length > 0 &&
+                      competitions.map((competition) => (
+                        <CompetitionCard
+                          key={competition._id}
+                          competition={competition}
+                        />
+                      ))}
                   </div>
                 </div>
               </div>
@@ -33,7 +41,7 @@ const Competitions = () => {
         </div>
       )}
     </Fragment>
-  );
-};
+  )
+}
 
-export default Competitions;
+export default Competitions

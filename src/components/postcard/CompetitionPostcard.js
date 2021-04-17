@@ -1,20 +1,29 @@
-import React, { Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Spinner from "../layout/Spinner";
-import "./Postcard.css";
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCompetition } from '../../actions/competitions'
+import { Link } from 'react-router-dom'
+import Spinner from '../layout/Spinner'
+import './Postcard.css'
 
-const CountryPostcard = () => {
-  const loading = false;
-  const competition = {
+const CountryPostcard = ({ match, history }) => {
+  const dispatch = useDispatch()
+  const competitionDetail = useSelector((state) => state.competitions)
+  const { competition, loading } = competitionDetail
+
+  useEffect(() => {
+    dispatch(getCompetition(match.params.id, history))
+    console.log(match.params.id)
+  }, [dispatch, match.params.id])
+  const comp = {
     year: 2020,
-    city: "Rotterdam",
+    city: 'Rotterdam',
     logo:
-      "https://static.eurovision.tv/hb-cgi/images/8e849f73-e0db-4864-b5be-107028b6800f.png",
+      'https://static.eurovision.tv/hb-cgi/images/8e849f73-e0db-4864-b5be-107028b6800f.png',
     image:
-      "https://res.cloudinary.com/dsliohzpe/image/upload/v1612177797/ESC-2021/placeholder_jlghg4.jpg",
-    presenter: "Event Cancelled",
-    video: "p-E-kIFPrsY",
-  };
+      'https://res.cloudinary.com/dsliohzpe/image/upload/v1612177797/ESC-2021/placeholder_jlghg4.jpg',
+    presenter: 'Event Cancelled',
+    video: 'p-E-kIFPrsY',
+  }
 
   return (
     <Fragment>
@@ -50,7 +59,9 @@ const CountryPostcard = () => {
                 <div className='postcard-info'>
                   <div>
                     <h3>Country</h3>
-                    <Link to={`/countries/123`}>The Netherlands</Link>
+                    <Link to={`/countries/${competition.country._id}`}>
+                      {competition.country.name}
+                    </Link>
                   </div>
                   <div>
                     <h3>Year</h3>
@@ -59,6 +70,10 @@ const CountryPostcard = () => {
                   <div>
                     <h3>City</h3>
                     <span>{competition.city}</span>
+                  </div>
+                  <div>
+                    <h3>Presenter</h3>
+                    <span>{competition.presenter}</span>
                   </div>
                   <div>
                     <h3>Winner</h3>
@@ -74,19 +89,9 @@ const CountryPostcard = () => {
 
               <div className='postcard-content'>
                 <div className='postcard-bio'>
-                  <p className='intro'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Inventore possimus voluptatibus voluptatum amet quae.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vitae laborum perspiciatis provident expedita itaque animi
-                    quas impedit ab quia saepe? Dolore omnis non quam voluptatem
-                    laborum alias excepturi magnam amet eos! Enim quae provident
-                    voluptatibus unde quaerat, illum magni delectus corrupti,
-                    obcaecati qui autem distinctio ab quibusdam laborum,
-                    perspiciatis officiis?
-                  </p>
+                  {competition.bio.map((p, idx) => (
+                    <p key={idx}>{p}</p>
+                  ))}
                 </div>
 
                 <div className='postcard-video'>
@@ -106,7 +111,7 @@ const CountryPostcard = () => {
         </Fragment>
       )}
     </Fragment>
-  );
-};
+  )
+}
 
-export default CountryPostcard;
+export default CountryPostcard

@@ -144,6 +144,10 @@
   font-weight: bold;
 }
 
+.postcard .postcard-content .postcard-bio p:first-of-type {
+  font-weight: bold;
+}
+
 .postcard .postcard-content .postcard-bio p {
   font-size: 1.3rem;
   line-height: 1.4;
