@@ -1,17 +1,17 @@
-import React, { Fragment, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCountry } from "../../actions/countries";
-import Spinner from "../layout/Spinner";
-import "./Postcard.css";
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCountry } from '../../actions/countries'
+import Spinner from '../layout/Spinner'
+import './Postcard.css'
 
 const CountryPostcard = ({ match, history }) => {
-  const dispatch = useDispatch();
-  const countryDetail = useSelector((state) => state.countries);
-  const { country, loading, error } = countryDetail;
+  const dispatch = useDispatch()
+  const countryDetail = useSelector((state) => state.countries)
+  const { country, loading } = countryDetail
 
   useEffect(() => {
-    dispatch(getCountry(match.params.id, history));
-  }, [dispatch, match.params.id]);
+    dispatch(getCountry(match.params.id, history))
+  }, [dispatch, match.params.id, history])
 
   return (
     <Fragment>
@@ -28,6 +28,10 @@ const CountryPostcard = ({ match, history }) => {
                     <img
                       className='postcard-img'
                       src={country.image}
+                      onError={(e) =>
+                        (e.target.src =
+                          'https://res.cloudinary.com/dsliohzpe/image/upload/v1612177797/ESC-2021/placeholder_jlghg4.jpg')
+                      }
                       alt={country.name}
                     />
                   </div>
@@ -57,7 +61,7 @@ const CountryPostcard = ({ match, history }) => {
                   </div>
                   <div className='postcard-list'>
                     <h3>Hosts</h3>
-                    <span>{country.events ? country.events.length : "0"}</span>
+                    <span>{country.events ? country.events.length : '0'}</span>
                   </div>
                 </div>
               </div>
@@ -85,7 +89,7 @@ const CountryPostcard = ({ match, history }) => {
         </Fragment>
       )}
     </Fragment>
-  );
-};
+  )
+}
 
-export default CountryPostcard;
+export default CountryPostcard

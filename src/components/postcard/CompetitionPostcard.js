@@ -12,18 +12,7 @@ const CountryPostcard = ({ match, history }) => {
 
   useEffect(() => {
     dispatch(getCompetition(match.params.id, history))
-    console.log(match.params.id)
-  }, [dispatch, match.params.id])
-  const comp = {
-    year: 2020,
-    city: 'Rotterdam',
-    logo:
-      'https://static.eurovision.tv/hb-cgi/images/8e849f73-e0db-4864-b5be-107028b6800f.png',
-    image:
-      'https://res.cloudinary.com/dsliohzpe/image/upload/v1612177797/ESC-2021/placeholder_jlghg4.jpg',
-    presenter: 'Event Cancelled',
-    video: 'p-E-kIFPrsY',
-  }
+  }, [dispatch, match.params.id, history])
 
   return (
     <Fragment>

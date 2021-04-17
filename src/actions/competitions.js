@@ -21,16 +21,15 @@ export const getCompetitions = () => async (dispatch) => {
       payload: res.data.data,
     })
   } catch (err) {
-    const errors = err.response.data.errors
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')))
-    }
+    dispatch({ type: COMPETITION_ERROR })
+    dispatch(
+      setAlert('Something went wrong trying to retrive competitions', 'danger')
+    )
   }
 }
 
 // Get competition by id
 export const getCompetition = (id, history) => async (dispatch) => {
-  // console.log(id)
   try {
     const res = await axios.get(`${api}/events/${id}`)
     dispatch({
@@ -38,10 +37,10 @@ export const getCompetition = (id, history) => async (dispatch) => {
       payload: res.data.data,
     })
   } catch (err) {
-    const errors = err.response.data.errors
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')))
-    }
+    dispatch({ type: COMPETITION_ERROR })
+    dispatch(
+      setAlert('Something went wrong trying to retrive competition', 'danger')
+    )
     history.push('/not-found')
   }
 }

@@ -12,7 +12,7 @@ const CompetitionCard = ({ competition }) => {
       </div>
       <div className='card-content'>
         <div className='card-pill'>
-          <Link to={`/countries/${country._id}`}>Norway</Link>
+          <Link to={`/countries/${country._id}`}>{country.name}</Link>
         </div>
         <div className='card-info'>
           <Link to={`/competitions/${_id}`}>

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const CountryCard = ({ country, flag, id }) => {
   return (
@@ -15,7 +15,7 @@ const CountryCard = ({ country, flag, id }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CountryCard;
+export default CountryCard

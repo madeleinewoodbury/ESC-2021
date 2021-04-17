@@ -2,6 +2,7 @@ import {
   GET_PARTICIPANTS,
   GET_PARTICIPANT,
   PARTICIPANT_ERROR,
+  CLEAR_PARTICIPANT,
   GET_VOTE,
   VOTE_ERROR,
 } from './types'
@@ -29,6 +30,7 @@ export const getParticipants = () => async (dispatch) => {
 
 // Get participant by id
 export const getParticipant = (id, history) => async (dispatch) => {
+  dispatch({ type: CLEAR_PARTICIPANT })
   try {
     const res = await axios.get(`${api}/participants/${id}`)
 
@@ -51,7 +53,6 @@ export const voteOnParticipant = (id, vote) => async (dispatch) => {
     const res = await axios.post(`${api}/votes/${id}/${vote}`)
     dispatch({
       type: GET_VOTE,
-      payload: res.data,
     })
     dispatch(loadUser())
     dispatch(
@@ -61,7 +62,6 @@ export const voteOnParticipant = (id, vote) => async (dispatch) => {
     const errors = err.response.data.errors
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')))
-      console.log(errors)
     }
 
     dispatch({
