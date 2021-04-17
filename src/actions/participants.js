@@ -6,7 +6,7 @@ import {
   VOTE_ERROR,
 } from './types'
 import axios from 'axios'
-// import { setAlert } from './alert';
+import { setAlert } from './alert'
 import { loadUser } from './auth'
 
 const api = 'http://localhost:5000/api'
@@ -54,10 +54,13 @@ export const voteOnParticipant = (id, vote) => async (dispatch) => {
       payload: res.data,
     })
     dispatch(loadUser())
+    dispatch(
+      setAlert(`You gave ${vote} points to ${res.data.country.name}`, 'success')
+    )
   } catch (err) {
     const errors = err.response.data.errors
     if (errors) {
-      // errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')))
       console.log(errors)
     }
 

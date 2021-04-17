@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { setAlert } from '../../actions/alert'
 import { register } from '../../actions/auth'
 import { Link, Redirect } from 'react-router-dom'
 
@@ -20,8 +21,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (password !== password2) {
-      // setAlert('Passwords do not match', 'danger', 3000);
-      alert('Passwords must match')
+      dispatch(setAlert('Passwords do not match', 'danger', 3000))
     } else {
       dispatch(register(formData))
     }

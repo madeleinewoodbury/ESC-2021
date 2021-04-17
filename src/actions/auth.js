@@ -8,7 +8,7 @@ import {
   LOGOUT,
 } from './types'
 import setAuthToken from '../utils/setAuthToken'
-// import { setAlert } from './alert';
+import { setAlert } from './alert'
 import axios from 'axios'
 
 const api = 'http://localhost:5000/api'
@@ -50,11 +50,11 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     })
 
     dispatch(loadUser())
+    dispatch(setAlert('Register success', 'success'))
   } catch (err) {
     const errors = err.response.data.errors
     if (errors) {
-      // errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-      console.log(errors)
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')))
     }
 
     dispatch({
@@ -84,8 +84,7 @@ export const login = ({ email, password }) => async (dispatch) => {
   } catch (err) {
     const errors = err.response.data.errors
     if (errors) {
-      // errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-      console.log(errors)
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')))
     }
 
     dispatch({

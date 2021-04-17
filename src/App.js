@@ -5,6 +5,7 @@ import { loadUser } from './actions/auth'
 import setAuthToken from './utils/setAuthToken'
 
 // Components
+import Alert from './components/layout/Alert'
 import Navbar from './components/layout/Navbar'
 import Landing from './components/layout/Landing'
 import Dashboard from './components/dashboard/Dashboard'
@@ -35,6 +36,7 @@ const App = () => {
       <Fragment>
         <Navbar />
         <Route exact path='/' component={Landing} />
+        <Alert />
         <Switch>
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/about' component={About} />
