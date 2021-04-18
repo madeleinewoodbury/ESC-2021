@@ -7,8 +7,7 @@
 }
 
 .info-container .banner {
-  background: url('../../img/esc-background-2.png') no-repeat center
-    center/cover;
+  background: url('../../img/banner.svg') no-repeat center center/cover;
   width: 25%;
   position: fixed;
   top: 10vh;

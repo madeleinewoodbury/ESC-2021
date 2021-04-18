@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../actions/auth'
 import { Link } from 'react-router-dom'
-import logo from '../../img/logo-white.png'
+import logo from '../../img/logo-2021.svg'
 import './Navbar.css'
 
 const Navbar = () => {
