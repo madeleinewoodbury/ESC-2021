@@ -45,7 +45,11 @@ const HistoryPostcard = ({ match, history }) => {
               <h3>Country</h3>
               <div className='country-info'>
                 <img
-                  src={`https://www.countryflags.io/${participant.country.code}/flat/16.png`}
+                  src={
+                    participant.country.altIcon
+                      ? participant.country.altIcon
+                      : `https://www.countryflags.io/${participant.country.code}/flat/16.png`
+                  }
                   alt={`${participant.country.name} flag`}
                 />
                 <Link to={`/countries/${participant.country._id}`}>

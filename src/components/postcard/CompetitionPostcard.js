@@ -48,9 +48,19 @@ const CountryPostcard = ({ match, history }) => {
                 <div className='postcard-info'>
                   <div>
                     <h3>Country</h3>
-                    <Link to={`/countries/${competition.country._id}`}>
-                      {competition.country.name}
-                    </Link>
+                    <div className='country-info'>
+                      <img
+                        src={
+                          competition.country.altIcon
+                            ? competition.country.altIcon
+                            : `https://www.countryflags.io/${competition.country.code}/flat/16.png`
+                        }
+                        alt={`${competition.country.name} flag`}
+                      />
+                      <Link to={`/countries/${competition.country._id}`}>
+                        {competition.country.name}
+                      </Link>
+                    </div>
                   </div>
                   <div>
                     <h3>Year</h3>
@@ -66,7 +76,15 @@ const CountryPostcard = ({ match, history }) => {
                   </div>
                   <div>
                     <h3>Winner</h3>
-                    <span>No Winner</span>
+                    <img
+                      src={
+                        competition.country.altIcon
+                          ? competition.country.altIcon
+                          : `https://www.countryflags.io/${competition.country.code}/flat/16.png`
+                      }
+                      alt={`${competition.country.name} flag`}
+                    />
+                    <span>{competition.winner.country.name}</span>
                   </div>
                   <div className='results'>
                     <Link
