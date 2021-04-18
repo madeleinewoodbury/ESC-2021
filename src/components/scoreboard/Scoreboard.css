@@ -50,17 +50,25 @@
   width: 75%;
 }
 
-.scoreboard .container .list .list-item .item-info h4 {
+.scoreboard .container .list .list-item .item-info .place {
   color: #fff;
   font-size: 1.3rem;
+  margin-right: 0.5rem;
 }
 
-.scoreboard .container .list .list-item .item-info h4.artist {
-  margin-left: 2rem;
+.scoreboard .container .list .list-item .item-info h2 {
+  color: #fff;
+  margin-left: 1rem;
 }
 
-.scoreboard .container .list .list-item .item-info h4:hover {
+.scoreboard .container .list .list-item .item-info h2:hover {
   color: var(--primary-color);
+}
+
+.scoreboard .container .list .list-item .item-info h2 span {
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+  margin-left: 1rem;
 }
 
 .scoreboard .container .list .list-item .item-info h4 span {
@@ -74,8 +82,7 @@
   color: #fff;
   font-size: 1.3rem;
 }
-
-.scoreboard .container .list .list-item .item-vote h4 span {
+3 .scoreboard .container .list .list-item .item-vote h4 span {
   margin-left: 0.2rem;
   font-size: 1.2rem;
 }

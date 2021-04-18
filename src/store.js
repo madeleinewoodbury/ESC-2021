@@ -6,6 +6,8 @@ import countryReducer from './reducers/countries'
 import competitionsReducer from './reducers/competitions'
 import authReducer from './reducers/auth'
 import alertReducer from './reducers/alert'
+import scoreboardReducer from './reducers/scoreboard'
+import historyReducer from './reducers/history'
 
 const reducer = combineReducers({
   participants: participantReducer,
@@ -13,6 +15,8 @@ const reducer = combineReducers({
   competitions: competitionsReducer,
   auth: authReducer,
   alerts: alertReducer,
+  scoreboard: scoreboardReducer,
+  history: historyReducer,
 })
 
 const initialState = {}

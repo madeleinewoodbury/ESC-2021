@@ -19,6 +19,8 @@ import Competitions from './components/competitions/Competitions'
 import ParticipantPostcard from './components/postcard/ParticipantPostcard'
 import CompetitionPostcard from './components/postcard/CompetitionPostcard'
 import CountryPostcard from './components/postcard/CountryPostcard'
+import Scoreboard from './components/scoreboard/Scoreboard'
+import HistoryPostcard from './components/postcard/HistoryPostcard'
 import NotFound from './components/layout/NotFound'
 import './App.css'
 
@@ -57,6 +59,8 @@ const App = () => {
             component={CompetitionPostcard}
           />
           <Route exact path='/countries/:id' component={CountryPostcard} />
+          <Route exact path='/history/:id' component={HistoryPostcard} />
+          <Route exact path='/scoreboard/:id' component={Scoreboard} />
           <Route component={NotFound} />
         </Switch>
       </Fragment>

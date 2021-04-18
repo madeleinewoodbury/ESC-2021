@@ -12,6 +12,10 @@ const CompetitionCard = ({ competition }) => {
       </div>
       <div className='card-content'>
         <div className='card-pill'>
+          <img
+            src={`https://www.countryflags.io/${country.code}/flat/16.png`}
+            alt={`${country.name} flag`}
+          />
           <Link to={`/countries/${country._id}`}>{country.name}</Link>
         </div>
         <div className='card-info'>

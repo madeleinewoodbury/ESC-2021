@@ -1,37 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ScoreboardItem = ({
-  participant: { _id, emoji, country, countryId, artist, song, points }
+  participant: { _id, country, artist, song, points, place },
 }) => {
   return (
-    <div className="list-item">
-      <div className="item-info">
-        <Link to={`/countries/${countryId}`}>
-          <h4>
-            {emoji} {country}
-          </h4>
-        </Link>
-        <Link to={`/participants/${_id}`}>
-          <h4 className="artist hide-xs">
+    <div className='list-item'>
+      <div className='item-info'>
+        <span className='place'>{place}</span>
+        <img
+          src={
+            country.altIcon
+              ? country.altIcon
+              : `https://www.countryflags.io/${country.code}/shiny/48.png`
+          }
+          alt={`${country.name} flag`}
+        />
+        <Link to={`/history/${_id}`}>
+          <h2 className='artist'>
             {artist}{' '}
-            <span className="hide-sm">
+            <span className='hide-sm'>
               <em>"{song}"</em>
             </span>
-          </h4>
+          </h2>
         </Link>
       </div>
-      <div className="item-vote">
-        {points ? (
-          <h4>
-            {points} <span>points</span>
-          </h4>
-        ) : (
-          <h4>TBA</h4>
-        )}
+      <div className='item-vote'>
+        <h4>
+          {points} <span>points</span>
+        </h4>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ScoreboardItem;
+export default ScoreboardItem

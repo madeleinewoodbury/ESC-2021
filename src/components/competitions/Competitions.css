@@ -51,15 +51,17 @@
 .competitions .card .card-content .card-pill {
   position: absolute;
   top: -15px;
-}
-
-.competitions .card .card-content .card-pill a {
   background-color: #fff;
   color: black;
   padding: 5px 20px;
-  text-align: center;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  text-align: center;
+}
+
+.competitions .card .card-content .card-pill img {
+  margin-right: 0.25rem;
 }
 
 .competitions .card .card-content .card-pill a:hover {

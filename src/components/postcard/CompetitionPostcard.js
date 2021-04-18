@@ -69,7 +69,10 @@ const CountryPostcard = ({ match, history }) => {
                     <span>No Winner</span>
                   </div>
                   <div className='results'>
-                    <Link to={`/scoreboard/123`} className='btn btn-dark'>
+                    <Link
+                      to={`/scoreboard/${competition._id}`}
+                      className='btn btn-dark'
+                    >
                       View Results
                     </Link>
                   </div>
