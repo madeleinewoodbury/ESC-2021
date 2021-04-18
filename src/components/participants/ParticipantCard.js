@@ -1,8 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ParticipantCard = ({ participant }) => {
-  const { _id, country, artist, song, image } = participant;
+  const { _id, country, artist, song, image } = participant
+
   return (
     <div className='card'>
       <div className='card-img'>
@@ -12,8 +13,13 @@ const ParticipantCard = ({ participant }) => {
       </div>
       <div className='card-content'>
         <div className='card-pill'>
-          <Link to={`/countries/123`}>{`${country.name}`}</Link>
+          <img
+            src={`https://www.countryflags.io/${country.code}/flat/16.png`}
+            alt={`${country.name} flag`}
+          />
+          <Link to={`/countries/${country._id}`}>{`${country.name}`}</Link>
         </div>
+
         <div className='card-info'>
           <Link to={`/participants/${_id}`}>{artist}</Link>
           <span>
@@ -22,7 +28,7 @@ const ParticipantCard = ({ participant }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ParticipantCard;
+export default ParticipantCard

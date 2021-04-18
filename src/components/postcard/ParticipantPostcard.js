@@ -60,7 +60,15 @@ const ParticipantPostcard = ({ match, history }) => {
           <div className='postcard-info'>
             <div>
               <h3>Country</h3>
-              <Link to={`/countries/123`}>{participant.country.name}</Link>
+              <div className='country-info'>
+                <img
+                  src={`https://www.countryflags.io/${participant.country.code}/flat/16.png`}
+                  alt={`${participant.country.name} flag`}
+                />
+                <Link to={`/countries/${participant.country._id}`}>
+                  {participant.country.name}
+                </Link>
+              </div>
             </div>
             <div>
               <h3>Artist</h3>
@@ -69,6 +77,14 @@ const ParticipantPostcard = ({ match, history }) => {
             <div>
               <h3>Song</h3>
               <span>{participant.song}</span>
+            </div>
+            <div>
+              <h3>Lyrics</h3>
+              <span>{participant.lyrics}</span>
+            </div>
+            <div>
+              <h3>Music</h3>
+              <span>{participant.music}</span>
             </div>
             {isAuthenticated && user !== null ? (
               <div className='user-votes'>
@@ -104,20 +120,11 @@ const ParticipantPostcard = ({ match, history }) => {
             ) : null}
           </div>
         </div>
-
         <div className='postcard-content'>
           <div className='postcard-bio'>
-            <p className='intro'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
-              similique, aliquid neque nobis omnis vero.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-              perferendis laboriosam quos nam magnam impedit. Rerum placeat
-              illum sed architecto debitis voluptatum optio a consequuntur
-              molestiae non in nostrum accusantium, modi minima explicabo
-              recusandae ratione autem quia veniam dolor? Eum.
-            </p>
+            {participant.bio.map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
           </div>
           {participant.video && (
             <div className='postcard-video'>

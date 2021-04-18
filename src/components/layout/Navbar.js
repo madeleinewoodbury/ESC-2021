@@ -8,12 +8,11 @@ import './Navbar.css'
 const Navbar = () => {
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.auth)
-  const { isAuthenticated, loading } = auth
+  const { isAuthenticated, loading, user } = auth
   const [viewMenu, toggleViewMenu] = useState(false)
 
   const handleLogout = (e) => {
-    // window.innerWidth < 1024 && toggleViewMenu(!viewMenu);
-    // logout();
+    window.innerWidth < 1024 && toggleViewMenu(!viewMenu)
     dispatch(logout())
   }
 
@@ -28,8 +27,7 @@ const Navbar = () => {
         <Link onClick={(e) => handleClick(e)} to='/dashboard' title='Dashboard'>
           <i className='fas fa-user'></i>
           <span className='hide-md'>
-            {/* {user && user.name.trim().split(' ')[0]} */}
-            John Doe
+            {user && user.name.trim().split(' ')[0]}
           </span>
         </Link>
       </li>

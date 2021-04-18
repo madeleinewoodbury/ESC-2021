@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getParticipants } from '../../actions/participants'
 import Spinner from '../layout/Spinner'
 import ParticipantCard from './ParticipantCard'
-// import participants from "../../participants";
 import './Participants.css'
 
 const Participants = () => {
