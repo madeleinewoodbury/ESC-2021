@@ -48,8 +48,12 @@ const CountryPostcard = ({ match, history }) => {
                 </div>
                 <div className='postcard-info'>
                   <div>
+                    <h3>Capital</h3>
+                    <span>{country.capital}</span>
+                  </div>
+                  <div>
                     <h3>Participations</h3>
-                    <span>17</span>
+                    <span>{country.participations}</span>
                   </div>
                   <div>
                     <h3>First Participation</h3>
@@ -57,11 +61,19 @@ const CountryPostcard = ({ match, history }) => {
                   </div>
                   <div className='postcard-list'>
                     <h3>Victories</h3>
-                    <span>0</span>
+                    <span>{country.victories}</span>
                   </div>
                   <div className='postcard-list'>
                     <h3>Hosts</h3>
-                    <span>{country.events ? country.events.length : '0'}</span>
+                    {country.events.length > 0 ? (
+                      <div>
+                        {country.events.map((e) => (
+                          <span className='event-year'>{e.year}</span>
+                        ))}
+                      </div>
+                    ) : (
+                      '0'
+                    )}
                   </div>
                 </div>
               </div>

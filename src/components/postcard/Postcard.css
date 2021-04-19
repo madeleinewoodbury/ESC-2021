@@ -93,6 +93,10 @@
   display: block;
 }
 
+.postcard .postcard-top .postcard-info .postcard-list .event-year {
+  margin-bottom: 0.2rem;
+}
+
 .postcard .postcard-top .postcard-info .results {
   position: absolute;
   bottom: 0;
@@ -113,9 +117,22 @@
   font-size: 0.9rem;
 }
 
+.postcard-info .alt-icon {
+  width: 16px;
+}
+
 .postcard-info .country-info {
   display: flex;
   text-align: center;
+  font-size: 0.9rem;
+}
+
+.postcard-info .country-info a {
+  color: black;
+}
+
+.postcard-info .country-info a:hover {
+  color: var(--primary-color);
 }
 
 .postcard-info .country-info img {
@@ -142,6 +159,42 @@
 .postcard .postcard-content {
   width: 80%;
   margin-top: -2px auto 0 auto;
+}
+
+.postcard .postcard-info .winner {
+  display: flex;
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.postcard-info .winner a {
+  color: black;
+}
+
+.postcard-info .winner a:hover {
+  color: var(--primary-color);
+}
+
+.postcard .postcard-info .winner img {
+  margin-right: 0.25rem;
+}
+
+.postcard .postcard-info .winner-info {
+  margin-top: -10px;
+}
+
+.postcard .postcard-info .winner-info a {
+  color: black;
+  font-size: 0.9rem;
+}
+
+.postcard .postcard-info .winner-info a:hover {
+  color: var(--primary-color);
+}
+
+.postcard .postcard-info .winner-info strong {
+  margin-right: 0.3rem;
 }
 
 .postcard .postcard-content .postcard-bio {

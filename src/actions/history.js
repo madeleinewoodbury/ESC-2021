@@ -25,6 +25,7 @@ export const getHistory = (id, history) => async (dispatch) => {
         name: countryRes.data.data.name,
         code: countryRes.data.data.code,
         flag: countryRes.data.data.flag,
+        altIcon: countryRes.data.data.altIcon && countryRes.data.data.altIcon,
       },
     }
 

@@ -9,6 +9,7 @@ const ScoreboardItem = ({
       <div className='item-info'>
         <span className='place'>{place}</span>
         <img
+          className={country.altIcon && 'alt-icon'}
           src={
             country.altIcon
               ? country.altIcon

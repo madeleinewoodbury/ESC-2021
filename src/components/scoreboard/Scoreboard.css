@@ -82,9 +82,13 @@
   color: #fff;
   font-size: 1.3rem;
 }
-3 .scoreboard .container .list .list-item .item-vote h4 span {
+.scoreboard .container .list .list-item .item-vote h4 span {
   margin-left: 0.2rem;
   font-size: 1.2rem;
+}
+
+.scoreboard .container .list .list-item .alt-icon {
+  width: 48px;
 }
 
 @media screen and (max-width: 1024px) {

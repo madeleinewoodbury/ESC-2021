@@ -45,6 +45,7 @@ const HistoryPostcard = ({ match, history }) => {
               <h3>Country</h3>
               <div className='country-info'>
                 <img
+                  className={participant.country.altIcon && 'alt-icon'}
                   src={
                     participant.country.altIcon
                       ? participant.country.altIcon

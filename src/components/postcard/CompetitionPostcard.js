@@ -50,6 +50,7 @@ const CountryPostcard = ({ match, history }) => {
                     <h3>Country</h3>
                     <div className='country-info'>
                       <img
+                        className={competition.country.altIcon && 'alt-icon'}
                         src={
                           competition.country.altIcon
                             ? competition.country.altIcon
@@ -76,15 +77,28 @@ const CountryPostcard = ({ match, history }) => {
                   </div>
                   <div>
                     <h3>Winner</h3>
-                    <img
-                      src={
-                        competition.country.altIcon
-                          ? competition.country.altIcon
-                          : `https://www.countryflags.io/${competition.country.code}/flat/16.png`
-                      }
-                      alt={`${competition.country.name} flag`}
-                    />
-                    <span>{competition.winner.country.name}</span>
+                    <div className='winner'>
+                      <img
+                        className={
+                          competition.winner.country.altIcon && 'alt-icon'
+                        }
+                        src={
+                          competition.winner.country.altIcon
+                            ? competition.winner.country.altIcon
+                            : `https://www.countryflags.io/${competition.winner.country.code}/flat/16.png`
+                        }
+                        alt={`${competition.country.name} flag`}
+                      />
+                      <Link to={`/countries/${competition.winner.country._id}`}>
+                        <span>{competition.winner.country.name}</span>
+                      </Link>
+                    </div>
+                    <div className='winner-info'>
+                      <Link to={`/history/${competition.winner._id}`}>
+                        <strong>{competition.winner.artist}</strong>
+                        <em>"{competition.winner.song}"</em>
+                      </Link>
+                    </div>
                   </div>
                   <div className='results'>
                     <Link

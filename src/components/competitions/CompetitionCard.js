@@ -13,7 +13,12 @@ const CompetitionCard = ({ competition }) => {
       <div className='card-content'>
         <div className='card-pill'>
           <img
-            src={`https://www.countryflags.io/${country.code}/flat/16.png`}
+            className={country.altIcon && 'alt-icon'}
+            src={
+              country.altIcon
+                ? country.altIcon
+                : `https://www.countryflags.io/${country.code}/flat/16.png`
+            }
             alt={`${country.name} flag`}
           />
           <Link to={`/countries/${country._id}`}>{country.name}</Link>

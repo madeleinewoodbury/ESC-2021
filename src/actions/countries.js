@@ -32,9 +32,30 @@ export const getCountries = () => async (dispatch) => {
 export const getCountry = (id, history) => async (dispatch) => {
   try {
     const res = await axios.get(`${api}/countries/${id}`)
+    const participations = await axios.get(
+      `${api}/countries/${id}/participants`
+    )
+    const victories = participations.data.data.filter((year) => year.winner)
+
+    const data = {
+      _id: res.data.data._id,
+      name: res.data.data.name,
+      capital: res.data.data.capital,
+      image: res.data.data.image,
+      flag: res.data.data.flag,
+      code: res.data.data.code,
+      altIcon: res.data.data.altIcon && res.data.data.altIcon,
+      firstParticipation: res.data.data.firstParticipation,
+      bio: res.data.data.bio,
+      video: res.data.data.video,
+      events: res.data.data.events,
+      participations: participations.data.count,
+      victories: victories.length,
+    }
+
     dispatch({
       type: GET_COUNTRY,
-      payload: res.data.data,
+      payload: data,
     })
   } catch (err) {
     dispatch({ type: COUNTRY_ERROR })
