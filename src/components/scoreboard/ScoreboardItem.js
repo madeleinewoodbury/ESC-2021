@@ -1,34 +1,35 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getIcon } from '../../icons'
 
-const ScoreboardItem = ({
-  participant: { _id, country, artist, song, points, place },
-}) => {
+const ScoreboardItem = ({ participant, viewTable }) => {
   return (
     <div className='list-item'>
       <div className='item-info'>
-        <span className='place'>{place}</span>
+        <span className='place'>
+          {viewTable === 'Grand Final'
+            ? participant.place
+            : participant.semiPlace}
+        </span>
         <img
-          className={country.altIcon && 'alt-icon'}
-          src={
-            country.altIcon
-              ? country.altIcon
-              : `https://www.countryflags.io/${country.code}/shiny/48.png`
-          }
-          alt={`${country.name} flag`}
+          src={getIcon(participant.country.code)}
+          alt={`${participant.country.name} flag`}
         />
-        <Link to={`/history/${_id}`}>
+        <Link to={`/history/${participant._id}`}>
           <h2 className='artist'>
-            {artist}{' '}
+            {participant.artist}{' '}
             <span className='hide-sm'>
-              <em>"{song}"</em>
+              <em>"{participant.song}"</em>
             </span>
           </h2>
         </Link>
       </div>
       <div className='item-vote'>
         <h4>
-          {points} <span>points</span>
+          {viewTable === 'Grand Final'
+            ? participant.points
+            : participant.semiPoints}{' '}
+          <span>points</span>
         </h4>
       </div>
     </div>

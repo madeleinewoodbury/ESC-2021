@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getHistory } from '../../actions/history'
+import { getIcon } from '../../icons'
 import { Link } from 'react-router-dom'
 import Spinner from '../layout/Spinner'
 import './Postcard.css'
@@ -45,12 +46,8 @@ const HistoryPostcard = ({ match, history }) => {
               <h3>Country</h3>
               <div className='country-info'>
                 <img
-                  className={participant.country.altIcon && 'alt-icon'}
-                  src={
-                    participant.country.altIcon
-                      ? participant.country.altIcon
-                      : `https://www.countryflags.io/${participant.country.code}/flat/16.png`
-                  }
+                  className='small-icon'
+                  src={getIcon(participant.country.code)}
                   alt={`${participant.country.name} flag`}
                 />
                 <Link to={`/countries/${participant.country._id}`}>

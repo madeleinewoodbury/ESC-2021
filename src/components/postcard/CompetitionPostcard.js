@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCompetition } from '../../actions/competitions'
+import { getIcon } from '../../icons'
 import { Link } from 'react-router-dom'
 import Spinner from '../layout/Spinner'
 import './Postcard.css'
@@ -50,12 +51,8 @@ const CountryPostcard = ({ match, history }) => {
                     <h3>Country</h3>
                     <div className='country-info'>
                       <img
-                        className={competition.country.altIcon && 'alt-icon'}
-                        src={
-                          competition.country.altIcon
-                            ? competition.country.altIcon
-                            : `https://www.countryflags.io/${competition.country.code}/flat/16.png`
-                        }
+                        className='small-icon'
+                        src={getIcon(competition.country.code)}
                         alt={`${competition.country.name} flag`}
                       />
                       <Link to={`/countries/${competition.country._id}`}>
@@ -77,28 +74,41 @@ const CountryPostcard = ({ match, history }) => {
                   </div>
                   <div>
                     <h3>Winner</h3>
-                    <div className='winner'>
-                      <img
-                        className={
-                          competition.winner.country.altIcon && 'alt-icon'
-                        }
-                        src={
-                          competition.winner.country.altIcon
-                            ? competition.winner.country.altIcon
-                            : `https://www.countryflags.io/${competition.winner.country.code}/flat/16.png`
-                        }
-                        alt={`${competition.country.name} flag`}
-                      />
-                      <Link to={`/countries/${competition.winner.country._id}`}>
-                        <span>{competition.winner.country.name}</span>
-                      </Link>
-                    </div>
-                    <div className='winner-info'>
-                      <Link to={`/history/${competition.winner._id}`}>
-                        <strong>{competition.winner.artist}</strong>
-                        <em>"{competition.winner.song}"</em>
-                      </Link>
-                    </div>
+                    {competition.winner.length > 1 ? (
+                      competition.winner.map((winner) => (
+                        <div key={winner._id} className='winner'>
+                          <img
+                            className='small-icon'
+                            src={getIcon(winner.country.code)}
+                            alt={`${winner.country.name} flag`}
+                          />
+                          <Link to={`/countries/${winner.country._id}`}>
+                            <span>{winner.country.name}</span>
+                          </Link>
+                        </div>
+                      ))
+                    ) : (
+                      <Fragment>
+                        <div className='winner'>
+                          <img
+                            className='small-icon'
+                            src={getIcon(competition.winner[0].country.code)}
+                            alt={`${competition.winner[0].country.name} flag`}
+                          />
+                          <Link
+                            to={`/countries/${competition.winner[0].country._id}`}
+                          >
+                            <span>{competition.winner[0].country.name}</span>
+                          </Link>
+                        </div>
+                        <div className='winner-info'>
+                          <Link to={`/history/${competition.winner[0]._id}`}>
+                            <strong>{competition.winner[0].artist}</strong>
+                            <em>"{competition.winner[0].song}"</em>
+                          </Link>
+                        </div>
+                      </Fragment>
+                    )}
                   </div>
                   <div className='results'>
                     <Link

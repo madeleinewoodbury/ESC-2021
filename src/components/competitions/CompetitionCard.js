@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getIcon } from '../../icons'
 
 const CompetitionCard = ({ competition }) => {
   const { logo, year, city, _id, country } = competition
@@ -13,12 +14,8 @@ const CompetitionCard = ({ competition }) => {
       <div className='card-content'>
         <div className='card-pill'>
           <img
-            className={country.altIcon && 'alt-icon'}
-            src={
-              country.altIcon
-                ? country.altIcon
-                : `https://www.countryflags.io/${country.code}/flat/16.png`
-            }
+            className='small-icon'
+            src={getIcon(country.code)}
             alt={`${country.name} flag`}
           />
           <Link to={`/countries/${country._id}`}>{country.name}</Link>

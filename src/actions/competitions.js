@@ -45,7 +45,7 @@ export const getCompetition = (id, history) => async (dispatch) => {
       bio: res.data.data.bio,
       video: res.data.data.video,
       country: res.data.data.country,
-      winner: winner[0],
+      winner: winner,
     }
 
     dispatch({

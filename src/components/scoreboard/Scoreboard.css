@@ -3,6 +3,21 @@
   margin: 2rem;
 }
 
+.scoreboard .scoreboard-btns {
+  margin-left: 2rem;
+  display: flex;
+}
+
+.scoreboard .scoreboard-btns .btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+}
+
+.scoreboard .scoreboard-btns .btn.active {
+  background-color: var(--dark-color);
+  color: var(--secondary-color);
+}
+
 .scoreboard .container .list {
   width: 80%;
   display: flex;
@@ -87,10 +102,6 @@
   font-size: 1.2rem;
 }
 
-.scoreboard .container .list .list-item .alt-icon {
-  width: 48px;
-}
-
 @media screen and (max-width: 1024px) {
   .scoreboard .container .list .list-item .item-title:first-of-type h2 {
     margin-left: 2rem;
@@ -134,5 +145,15 @@
   .scoreboard .container .list .list-item .item-vote,
   .scoreboard .container .list .list-item .item-vote h4 span {
     font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .scoreboard .container .list .list-item img {
+    width: 16px;
+  }
+
+  .scoreboard .container .list .list-item .item-info h2 {
+    font-size: 1.2rem;
   }
 }

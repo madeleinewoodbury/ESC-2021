@@ -56,7 +56,6 @@
   position: absolute;
   top: -15px;
   background-color: #fff;
-  color: black;
   padding: 5px 20px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -64,13 +63,22 @@
   text-align: center;
 }
 
-.competitions .card .card-content .card-pill img {
-  margin-right: 0.25rem;
+.competitions .card .card-content .card-pill a {
+  color: black;
 }
 
-.competitions .card .card-content .card-pill a:hover {
-  background-color: black;
+.competitions .card .card-content .card-pill:hover,
+.competitions .card .card-content .card-pill:hover a {
+  background-color: var(--dark-color);
   color: #fff;
+}
+
+.competitions .card .card-content .card-pill .small-icon {
+  width: 16px;
+}
+
+.competitions .card .card-content .card-pill img {
+  margin-right: 0.25rem;
 }
 
 .competitions .card .card-content .card-info {
