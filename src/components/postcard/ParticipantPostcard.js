@@ -44,6 +44,10 @@ const ParticipantPostcard = ({ match, history }) => {
               <img
                 className='postcard-img'
                 src={participant.image}
+                onError={(e) =>
+                  (e.target.src =
+                    'https://res.cloudinary.com/dsliohzpe/image/upload/v1612177797/ESC-2021/placeholder_jlghg4.jpg')
+                }
                 alt={participant.artist}
               />
             </div>

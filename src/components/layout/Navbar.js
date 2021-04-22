@@ -95,6 +95,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link onClick={(e) => handleClick(e)} to='/winners'>
+                Winners
+              </Link>
+            </li>
+            <li>
               <Link onClick={(e) => handleClick(e)} to='/about'>
                 About
               </Link>

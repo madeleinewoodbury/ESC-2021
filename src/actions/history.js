@@ -1,8 +1,25 @@
-import { GET_HISTORY, HISTORY_ERROR } from './types'
+import { GET_HISTORY, GET_WINNERS, HISTORY_ERROR } from './types'
 import axios from 'axios'
 import { setAlert } from './alert'
 
 const api = 'https://eurovision-song-contest-api.herokuapp.com/api/v1'
+
+// Get winners
+export const getWinners = () => async (dispatch) => {
+  try {
+    const res = await axios.get(`${api}/participants/winners/list`)
+
+    dispatch({
+      type: GET_WINNERS,
+      payload: res.data.data,
+    })
+  } catch (err) {
+    dispatch({ type: HISTORY_ERROR, payload: err })
+    dispatch(
+      setAlert('Something went wrong trying to retrive participants', 'danger')
+    )
+  }
+}
 
 // Get history participant
 export const getHistory = (id, history) => async (dispatch) => {
@@ -27,6 +44,7 @@ export const getHistory = (id, history) => async (dispatch) => {
         flag: countryRes.data.data.flag,
         altIcon: countryRes.data.data.altIcon && countryRes.data.data.altIcon,
       },
+      event: res.data.data.event,
     }
 
     dispatch({

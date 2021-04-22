@@ -16,7 +16,7 @@ const Competitions = () => {
 
   return (
     <Fragment>
-      {loading ? (
+      {loading || competitions.length < 1 ? (
         <Spinner />
       ) : (
         <div className='competitions background'>

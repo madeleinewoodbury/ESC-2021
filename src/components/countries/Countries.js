@@ -16,7 +16,7 @@ const Countries = () => {
 
   return (
     <Fragment>
-      {loading ? (
+      {loading || countries.length < 1 ? (
         <Spinner />
       ) : (
         <div className='countries background'>

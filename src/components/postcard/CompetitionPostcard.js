@@ -30,6 +30,10 @@ const CountryPostcard = ({ match, history }) => {
                     <img
                       className='postcard-img'
                       src={competition.image}
+                      onError={(e) =>
+                        (e.target.src =
+                          'https://res.cloudinary.com/dsliohzpe/image/upload/v1612177797/ESC-2021/placeholder_jlghg4.jpg')
+                      }
                       alt={competition.city}
                     />
                   </div>
@@ -74,40 +78,52 @@ const CountryPostcard = ({ match, history }) => {
                   </div>
                   <div>
                     <h3>Winner</h3>
-                    {competition.winner.length > 1 ? (
-                      competition.winner.map((winner) => (
-                        <div key={winner._id} className='winner'>
-                          <img
-                            className='small-icon'
-                            src={getIcon(winner.country.code)}
-                            alt={`${winner.country.name} flag`}
-                          />
-                          <Link to={`/countries/${winner.country._id}`}>
-                            <span>{winner.country.name}</span>
-                          </Link>
-                        </div>
-                      ))
-                    ) : (
+                    {competition.winner.length > 0 ? (
                       <Fragment>
-                        <div className='winner'>
-                          <img
-                            className='small-icon'
-                            src={getIcon(competition.winner[0].country.code)}
-                            alt={`${competition.winner[0].country.name} flag`}
-                          />
-                          <Link
-                            to={`/countries/${competition.winner[0].country._id}`}
-                          >
-                            <span>{competition.winner[0].country.name}</span>
-                          </Link>
-                        </div>
-                        <div className='winner-info'>
-                          <Link to={`/history/${competition.winner[0]._id}`}>
-                            <strong>{competition.winner[0].artist}</strong>
-                            <em>"{competition.winner[0].song}"</em>
-                          </Link>
-                        </div>
+                        {competition.winner.length > 1 ? (
+                          competition.winner.map((winner) => (
+                            <div key={winner._id} className='winner'>
+                              <img
+                                className='small-icon'
+                                src={getIcon(winner.country.code)}
+                                alt={`${winner.country.name} flag`}
+                              />
+                              <Link to={`/countries/${winner.country._id}`}>
+                                <span>{winner.country.name}</span>
+                              </Link>
+                            </div>
+                          ))
+                        ) : (
+                          <Fragment>
+                            <div className='winner'>
+                              <img
+                                className='small-icon'
+                                src={getIcon(
+                                  competition.winner[0].country.code
+                                )}
+                                alt={`${competition.winner[0].country.name} flag`}
+                              />
+                              <Link
+                                to={`/countries/${competition.winner[0].country._id}`}
+                              >
+                                <span>
+                                  {competition.winner[0].country.name}
+                                </span>
+                              </Link>
+                            </div>
+                            <div className='winner-info'>
+                              <Link
+                                to={`/history/${competition.winner[0]._id}`}
+                              >
+                                <strong>{competition.winner[0].artist}</strong>
+                                <em>"{competition.winner[0].song}"</em>
+                              </Link>
+                            </div>
+                          </Fragment>
+                        )}
                       </Fragment>
+                    ) : (
+                      <span>TBA</span>
                     )}
                   </div>
                   <div className='results'>

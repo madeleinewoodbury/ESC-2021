@@ -70,7 +70,16 @@
   color: #fff;
 }
 
-.participants .card .card-content .card-pill .small-icon {
+.participants .card .card-content .winner-link {
+  padding-bottom: 0.5rem;
+}
+
+.participants .card .card-content .winner-link img {
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+.participants .card .card-content .small-icon {
   width: 16px;
 }
 
@@ -97,6 +106,10 @@
 .participants .card .card-content .card-info span {
   font-size: 0.9rem;
   color: var(--secondary-color);
+}
+
+.participants .card .card-content .winner-link a {
+  font-size: 1.3rem;
 }
 
 @media screen and (max-width: 1200px) {

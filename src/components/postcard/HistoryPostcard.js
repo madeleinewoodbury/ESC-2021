@@ -27,6 +27,10 @@ const HistoryPostcard = ({ match, history }) => {
               <img
                 className='postcard-img'
                 src={participant.image}
+                onError={(e) =>
+                  (e.target.src =
+                    'https://res.cloudinary.com/dsliohzpe/image/upload/v1612177797/ESC-2021/placeholder_jlghg4.jpg')
+                }
                 alt={participant.artist}
               />
             </div>
@@ -70,6 +74,12 @@ const HistoryPostcard = ({ match, history }) => {
             <div>
               <h3>Points</h3>
               <span>{participant.points}</span>
+            </div>
+            <div>
+              <h3>Contest</h3>
+              <span>
+                {participant.event.city} {participant.event.year}
+              </span>
             </div>
           </div>
         </div>
