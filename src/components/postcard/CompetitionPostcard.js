@@ -122,6 +122,8 @@ const CountryPostcard = ({ match, history }) => {
                           </Fragment>
                         )}
                       </Fragment>
+                    ) : competition.year === 2020 ? (
+                      <span>No winner - Event cancelled</span>
                     ) : (
                       <span>TBA</span>
                     )}

@@ -8,6 +8,7 @@ const api = 'https://eurovision-song-contest-api.herokuapp.com/api/v1'
 export const getWinners = () => async (dispatch) => {
   try {
     const res = await axios.get(`${api}/participants/winners/list`)
+    console.log(res.data.data)
 
     dispatch({
       type: GET_WINNERS,
