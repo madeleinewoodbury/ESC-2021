@@ -11,7 +11,8 @@ import setAuthToken from '../utils/setAuthToken'
 import { setAlert } from './alert'
 import axios from 'axios'
 
-const api = 'http://localhost:5000/api'
+// const api = 'http://localhost:5000/api'
+const api = 'https://eurovision-2021-api.herokuapp.com/api'
 
 // Load User
 export const loadUser = () => async (dispatch) => {
