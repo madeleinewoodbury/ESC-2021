@@ -186,15 +186,6 @@
   margin-top: -10px;
 }
 
-.postcard .postcard-info .winner-info a {
-  color: black;
-  font-size: 0.9rem;
-}
-
-.postcard .postcard-info .winner-info a:hover {
-  color: var(--primary-color);
-}
-
 .postcard .postcard-info .winner-info strong {
   margin-right: 0.3rem;
 }
@@ -230,6 +221,17 @@
 .postcard .postcard-content iframe {
   width: 700px;
   height: 400px;
+}
+
+.postcard .postcard-info .winner-info a,
+.postcard .postcard-info .info-link {
+  color: black;
+  font-size: 0.9rem;
+}
+
+.postcard .postcard-info .winner-info a:hover,
+.postcard .postcard-info .info-link:hover {
+  color: var(--primary-color);
 }
 
 @media screen and (max-width: 1200px) {

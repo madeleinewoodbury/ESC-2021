@@ -78,7 +78,12 @@ const HistoryPostcard = ({ match, history }) => {
             <div>
               <h3>Contest</h3>
               <span>
-                {participant.event.city} {participant.event.year}
+                <Link
+                  className='info-link'
+                  to={`/competitions/${participant.event._id}`}
+                >
+                  {participant.event.city} {participant.event.year}
+                </Link>
               </span>
             </div>
           </div>
