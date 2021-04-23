@@ -19,8 +19,9 @@
 }
 
 .navbar .logo img {
-  width: 100px;
+  width: 75px;
   margin: 0.5rem;
+  padding-top: 0.2rem;
   position: absolute;
 }
 
@@ -41,8 +42,8 @@
 .navbar .links-container {
   display: flex;
   justify-content: space-between;
-  width: 80%;
-  margin-left: 200px;
+  width: 100%;
+  margin-left: 100px;
 }
 
 .navbar .nav-links {
@@ -74,6 +75,13 @@
   color: var(--secondary-color);
 }
 
+@media screen and (max-width: 1200px) {
+  .navbar .nav-links li a {
+    font-size: 1.1rem;
+    margin: 0 0.75rem;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .navbar .menu-toggle {
     display: initial;
@@ -82,6 +90,10 @@
 
   .navbar .menu-toggle:hover {
     color: var(--secondary-color);
+  }
+
+  .navbar .logo img {
+    padding-top: 0;
   }
 
   .navbar .links-container {

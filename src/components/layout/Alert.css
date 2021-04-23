@@ -36,3 +36,9 @@
   color: #333;
   border: #ccc solid 1px;
 }
+
+@media screen and (max-width: 500px) {
+  .alert {
+    width: 80%;
+  }
+}

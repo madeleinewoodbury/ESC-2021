@@ -24,6 +24,7 @@
 .info .container-inner {
   width: 80%;
   margin: 0 auto 3rem auto;
+  padding-bottom: 50px;
 }
 
 .info .img-container img {

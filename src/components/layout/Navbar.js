@@ -12,12 +12,12 @@ const Navbar = () => {
   const [viewMenu, toggleViewMenu] = useState(false)
 
   const handleLogout = (e) => {
-    window.innerWidth < 1024 && toggleViewMenu(!viewMenu)
+    window.innerWidth <= 1024 && toggleViewMenu(!viewMenu)
     dispatch(logout())
   }
 
   const handleClick = (e) => {
-    window.innerWidth < 1024 && toggleViewMenu(!viewMenu)
+    window.innerWidth <= 1024 && toggleViewMenu(!viewMenu)
   }
 
   const authLinks = (
@@ -60,7 +60,9 @@ const Navbar = () => {
       <div className='navbar-behind'></div>
       <nav className='navbar'>
         <div className='logo'>
-          <img src={logo} alt='logo' />
+          <Link onClick={(e) => handleClick(e)} to='/'>
+            <img src={logo} alt='logo' />
+          </Link>
         </div>
         <label className='menu-toggle' htmlFor='toggle'>
           &#9776;
