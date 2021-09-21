@@ -5,10 +5,15 @@ import './Countdown.css'
 
 const Countdown = ({ timeTillDate }) => {
   const [timeLeft, setTimeLeft] = useState({})
+  const [timeOver, setTimeOver] = useState(false)
   useEffect(() => {
     const intervalId = setInterval(() => {
       const now = new Date().getTime()
       const difference = timeTillDate - now
+      if (difference < 0) {
+        setTimeOver(true)
+        return
+      }
       const days = Math.floor(difference / (1000 * 60 * 60 * 24))
       const hours = Math.floor(
         (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -33,7 +38,7 @@ const Countdown = ({ timeTillDate }) => {
 
   return (
     <div className='countdown'>
-      {days < 1 && hours < 1 && minutes < 1 && seconds < 1 ? (
+      {timeOver ? (
         <Fragment>
           <h2>The Wait Is Over!</h2>
           <p>The results will be published shortly</p>

@@ -7,7 +7,7 @@ import setAuthToken from './utils/setAuthToken'
 // Components
 import Alert from './components/layout/Alert'
 import Navbar from './components/layout/Navbar'
-import Landing from './components/layout/Landing'
+// import Landing from './components/layout/Landing'
 import Dashboard from './components/dashboard/Dashboard'
 import About from './components/info/About'
 import History from './components/info/History'
@@ -38,7 +38,7 @@ const App = () => {
     <Router>
       <Fragment>
         <Navbar />
-        <Route exact path='/' component={Landing} />
+        <Route exact path='/' component={Participants} />
         <Alert />
         <Switch>
           <Route exact path='/dashboard' component={Dashboard} />

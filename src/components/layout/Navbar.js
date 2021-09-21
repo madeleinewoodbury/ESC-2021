@@ -76,11 +76,11 @@ const Navbar = () => {
         />
         <div className='links-container menu'>
           <ul className='nav-links'>
-            <li>
+            {/* <li>
               <Link onClick={(e) => handleClick(e)} to='/'>
                 Home
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link onClick={(e) => handleClick(e)} to='/participants'>
                 Participants
